@@ -6,6 +6,6 @@ DropboxFolder::Conf.setup do |conf|
   # Dropbox consumer key
   conf.consumer_key = "DROPBOX_CONSUMER_KEY"
   # Dropbox consumer_secret
-  conf.consumer_secret = "CONSUMER_SECRET"
+  conf.consumer_secret = "DROPBOX_CONSUMER_SECRET"
 end
 
