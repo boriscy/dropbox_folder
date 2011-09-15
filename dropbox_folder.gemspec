@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["boriscyber@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Creates a folder in dropbox for an activerecord model}
-  s.description = %q{TODO: Write a gem description}
+  s.description = %q{Creates or updates dropbox model folders}
 
 
   s.add_dependency 'activerecord', '>= 3.0.2'
