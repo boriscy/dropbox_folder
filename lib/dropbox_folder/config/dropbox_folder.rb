@@ -1,4 +1,4 @@
-DropboxFolder.setup do |conf|
+DropboxFolder::Conf.setup do |conf|
   # Your dropbox email
   conf.email = "DROPBOX_EMAIL"
   # Dropbox password

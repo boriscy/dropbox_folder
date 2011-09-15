@@ -8,6 +8,9 @@ ActiveRecord::Base.establish_connection(
 class Machine < ActiveRecord::Base
 end
 
+class User < ActiveRecord::Base
+end
+
 module Schema
   def self.create
     ActiveRecord::Base.silence do

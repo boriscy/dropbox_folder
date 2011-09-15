@@ -4,17 +4,19 @@ class DropboxFolderError < RuntimeError
 end
 
 module DropboxFolder
-  mattr_accessor :args, :email, :password, :consumer_key, :consumer_secret, :session, :dropbox_folder
+  module Conf
+    mattr_accessor :email, :password, :consumer_key, :consumer_secret, :session, :dropbox_folder
+
+    def self.setup(&b)
+      b.call(self)
+    end
+  end
 
   def self.included(base)
     base.send(:extend, ClassMethods)
     base.send(:include, InstanceMethods)
   end
   
-  def self.setup(&b)
-    b.call(self)
-  end
-
   module ClassMethods
     # Can recive a method, with options
     def has_dropbox_folder(method = nil, options = {})
@@ -27,12 +29,13 @@ module DropboxFolder
       before_save   :set_dropbox_new_record
       before_update :set_old_dropbox_folder_name
       after_save    :create_or_update_dropbox_folder
+      after_destroy :destroy_dropbox_folder
     end
 
   end
 
   module InstanceMethods
-    # To help
+    # To access the Dropbox gem session instance
     def dropbox_folder_session
       @dropbox_folder_session
     end
@@ -66,7 +69,7 @@ module DropboxFolder
         unless name === old_dropbox_folder_name
 
           raise DropboxFolderError, "There was an error with authorization" unless login_and_authorize_dropbox
-          dropbox_folder_session.rename old_dropbox_folder_name, name
+          dropbox_folder_session.move old_dropbox_folder_name, name
         end
       end
     end
@@ -79,18 +82,23 @@ module DropboxFolder
       @old_dropbox_folder_name = self.class.find(self.id).get_dropbox_folder_name
     end
 
+    def destroy_dropbox_folder
+      login_and_authorize_dropbox
+      dropbox_folder_session.delete get_dropbox_folder_name
+    end
+
     # Login to the account and authorize
     def login_and_authorize_dropbox
       agent = Mechanize.new
       page = agent.get("http://dropbox.com")
       # login
       login_form = page.forms.find {|v| v.action =~ /login/ }
-      login_form.login_email    = DropboxFolder.email
-      login_form.login_password = DropboxFolder.password
+      login_form.login_email    = DropboxFolder::Conf.email
+      login_form.login_password = DropboxFolder::Conf.password
       login_form.submit
       # dropbox client
-      consumer_key    = DropboxFolder.consumer_key
-      consumer_secret = DropboxFolder.consumer_secret
+      consumer_key    = DropboxFolder::Conf.consumer_key
+      consumer_secret = DropboxFolder::Conf.consumer_secret
       @dropbox_folder_session = Dropbox::Session.new(consumer_key, consumer_secret)
       @dropbox_folder_session.mode = :dropbox
 
