@@ -1,5 +1,5 @@
 require 'mechanize'
-require 'dropbox_folder'
+require 'dropbox'
 require "dropbox_folder/version"
 
 class DropboxFolderError < RuntimeError
