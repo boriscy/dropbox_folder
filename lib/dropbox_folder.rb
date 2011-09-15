@@ -89,17 +89,17 @@ module DropboxFolder
 
     # Login to the account and authorize
     def login_and_authorize_dropbox
-      agent = Mechanize.new
+      agent = ::Mechanize.new
       page = agent.get("http://dropbox.com")
       # login
       login_form = page.forms.find {|v| v.action =~ /login/ }
-      login_form.login_email    = DropboxFolder::Conf.email
-      login_form.login_password = DropboxFolder::Conf.password
+      login_form.login_email    = ::DropboxFolder::Conf.email
+      login_form.login_password = ::DropboxFolder::Conf.password
       login_form.submit
       # dropbox client
-      consumer_key    = DropboxFolder::Conf.consumer_key
-      consumer_secret = DropboxFolder::Conf.consumer_secret
-      @dropbox_folder_session = Dropbox::Session.new(consumer_key, consumer_secret)
+      consumer_key    = ::DropboxFolder::Conf.consumer_key
+      consumer_secret = ::DropboxFolder::Conf.consumer_secret
+      @dropbox_folder_session = ::Dropbox::Session.new(consumer_key, consumer_secret)
       @dropbox_folder_session.mode = :dropbox
 
       auth_page =  agent.get(@dropbox_folder_session.authorize_url)
