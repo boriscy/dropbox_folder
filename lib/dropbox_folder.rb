@@ -4,81 +4,95 @@ class DropboxFolderError < RuntimeError
 end
 
 module DropboxFolder
+  mattr_accessor :args, :email, :password, :consumer_key, :consumer_secret, :session, :dropbox_folder
+
   def self.included(base)
     base.send(:extend, ClassMethods)
     base.send(:include, InstanceMethods)
   end
   
+  def self.setup(&b)
+    b.call(self)
+  end
+
   module ClassMethods
-    def has_dropbox_folder(*args)
-      self.dropbox_folder_args = args
-      after_save :create_or_update_dropbox_folder
+    # Can recive a method, with options
+    def has_dropbox_folder(method = nil, options = {})
+      cattr_accessor :dropbox_folder, :dropbox_folder_name
+
+      self.dropbox_folder_name = method || :to_s
+      self.dropbox_folder      = options[:dropbox_folder] || self.to_s.downcase.pluralize
+
+      # Callbacks
+      before_save   :set_dropbox_new_record
+      before_update :set_old_dropbox_folder_name
+      after_save    :create_or_update_dropbox_folder
     end
 
-    def setup(&b)
-      catt_accessor :args, :login, :password, :consumer_key, :consumer_secret, :session, :dir 
-      b.call(self)
-    end
   end
 
   module InstanceMethods
     # To help
-    def dropbox_session
-      @dropbox_session
+    def dropbox_folder_session
+      @dropbox_folder_session
     end
 
-    def dropbox_name
-      self.class.dropbox_folder_args.map {|met| self.send(met) }.join("-")
+    def get_dropbox_folder_name
+      self.class.dropbox_folder.to_s + "/" + self.send(self.class.dropbox_folder_name).to_s
+    end
+
+    def dropbox_name_changed?
+      !(@old_dropbox_folder_name == get_dropbox_folder_name)
     end
 
     private
 
-    def create_or_update_dropbox_folder
-      name = dropbox_name
+    def set_dropbox_new_record
+      @dropbox_new_record = new_record?
+      true
+    end
 
-      if created_at === updated_at
-        raise DropboxfolderError, "There was an error with authorization" unless login_and_authorize_dropbox
-        @dropbox_session.create_folder name
+    def dropbox_new_record?
+      !!@dropbox_new_record
+    end
+
+    def create_or_update_dropbox_folder
+      name = get_dropbox_folder_name
+
+      if dropbox_new_record?
+        raise DropboxFolderError, "There was an error with authorization" unless login_and_authorize_dropbox
+        dropbox_folder_session.create_folder name
       else
-        old_name = changed_dropbox_name
-        if old_name
-          raise DropboxfolderError, "There was an error with authorization" unless login_and_authorize_dropbox
-          @dropbox_session.rename old_name, name
+        unless name === old_dropbox_folder_name
+
+          raise DropboxFolderError, "There was an error with authorization" unless login_and_authorize_dropbox
+          dropbox_folder_session.rename old_dropbox_folder_name, name
         end
       end
     end
 
-    # returns the old dropbox name and false if it has nod changed
-    def changed_dropbox_name
-      if self.class.dropbox_folder_args.map {|v| self.send(:"#{v}_changed?") }.uniq == [nil]
-        false
-      else
-        self.class.dropbox_folder_args.map do |v|
-          val = ""
-          if self.send(:"#{v}_change")
-            val = self.send(:"#{v}_change").first
-          else
-            val = self.send(v)
-          end
-
-          val
-        end.join("-")
-      end
+    def old_dropbox_folder_name
+      @old_dropbox_folder_name
     end
 
+    def set_old_dropbox_folder_name
+      @old_dropbox_folder_name = self.class.find(self.id).get_dropbox_folder_name
+    end
+
+    # Login to the account and authorize
     def login_and_authorize_dropbox
       agent = Mechanize.new
       page = agent.get("http://dropbox.com")
       # login
       login_form = page.forms.find {|v| v.action =~ /login/ }
-      login_form.login_email = self.class.email
-      login_form.login_password = self.class.password
+      login_form.login_email    = DropboxFolder.email
+      login_form.login_password = DropboxFolder.password
       login_form.submit
       # dropbox client
-      consumer_key    = self.class.consumer_key
-      consumer_secret = self.class.consumer_secret
-      @dropbox_session = Dropbox::Session.new(consumer_key, consumer_secret)
-      @dropbox_session.mode = :dropbox
+      consumer_key    = DropboxFolder.consumer_key
+      consumer_secret = DropboxFolder.consumer_secret
+      @dropbox_folder_session = Dropbox::Session.new(consumer_key, consumer_secret)
+      @dropbox_folder_session.mode = :dropbox
 
       auth_page =  agent.get(@dropbox_folder_session.authorize_url)
 

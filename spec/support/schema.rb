@@ -6,7 +6,6 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Machine < ActiveRecord::Base
-  has_dropbox_folder :id, :name
 end
 
 module Schema
@@ -19,6 +18,12 @@ module Schema
           t.string :name
           t.string :extra_info
           t.text :data
+          t.timestamps
+        end
+
+        create_table :users, :force => true do |t|
+          t.string :email
+          t.string :password
           t.timestamps
         end
       end
