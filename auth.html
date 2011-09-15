@@ -1,0 +1,381 @@
+
+    
+        
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <script type="text/javascript">window.ST=new Date().getTime();</script>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta name="description" content="Dropbox es un servicio gratuito que te permite llevar fotos, documentos y videos en cualquier lugar y compartirlos fácilmente. ¡Nunca te enviarás un archivo por correo electrónico otra vez!"/>
+    <meta name="keywords" content="online storage, free storage, file sharing, share files, awesome, cloud storage, online backup, cross platform, sync, sharing, mac, windows, os x, linux, backup, collaboration, file versioning, file revisions, remote access, undelete"/>
+    <meta name="google-site-verification" content="TnuSyOnBMNmtugbpL1ZvW2PbSF9LKvoTzrvOGS9h-b0" />
+    <meta name="google-site-verification" content="EZKIczQcM1-DVUMz8heu1dIhNtxNbLqbaA9-HbOnCQ4" />
+    <meta name="norton-safeweb-site-verification" content="tz8iotmk-pkhui406y41y5bfmfxdwmaa4a-yc0hm6r0fga7s6j0j27qmgqkmc7oovihzghbzhbdjk-uiyrz438nxsjdbj3fggwgl8oq2nf4ko8gi7j4z7t78kegbidl4" />
+    <title>Dropbox
+                - Solicitud de la API fue autorizada
+        - Simplifica tu vida
+    </title>
+
+    <link rel="shortcut icon" href="/static/19128/images/favicon.ico"/>
+
+    <link href="/static/19128/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/19128/css/lib.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="/static/19128/css/sprites.css" rel="stylesheet" type="text/css" media="screen"/>
+
+    <link rel="apple-touch-icon" href="/static/19128/images/dropbox_webclip.png"/>
+    <link rel="P3Pv1" href="/w3c/p3p.xml"/>
+
+        <script type="text/javascript" charset="utf-8" src="/static/javascript/langpack/es.js"></script>
+
+
+<script type="text/javascript">
+var Constants = {
+  BLOCK_CLUSTER: 'dl\x2dweb\x2edropbox\x2ecom',
+  PUBSERVER: 'dl\x2edropbox\x2ecom',
+  WEBSERVER: 'www\x2edropbox\x2ecom',
+  block: 'dl\x2dweb\x2edropbox\x2ecom',
+  protocol: 'https',
+  uid: '13559885',
+  root_ns: '21126234',
+  SVN_REV: '19128',
+  TOKEN: '98dae0e263',
+  IS_PROD: 1,
+  WIT_ENABLED: 0,
+  upload_debug: false,
+  tcn: 'touch',
+  date_format: 'dd\x2fMM\x2fyyyy',
+  referrer: 'https\x3a\x2f\x2fwww\x2edropbox\x2ecom\x2flogin', 
+  TWO_ITEM_LIST: '\x25\x28x\x29s\x20and\x20\x25\x28y\x29s',
+  THREE_ITEM_LIST: '\x25\x28x\x29s\x2c\x20\x25\x28y\x29s\x20and\x20\x25\x28z\x29s',
+  LOCALES: [["en", "English"], ["es", "Espa\u00f1ol"], ["fr", "Fran\u00e7ais"], ["de", "Deutsch"], ["ja", "\u65e5\u672c\u8a9e"]],
+  USER_LOCALE: 'es'
+  ,
+  auto_timezone_offset: -4.0
+};
+</script>
+    <script type="text/javascript" src="/static/19128/javascript/lib-mini.js"></script>
+    <script type="text/javascript">
+        function global_report_exception (e, f, l, tb, force) {
+            if (!window.reported_exception || force) {
+                var stack_str = "";
+                try {
+                    if (!tb) {
+                        var stack = get_stack_rep();
+                        stack.pop(); // remove global_report_exception
+                        stack.pop(); // remove onerror handler
+                        stack_str = stack.join("\n");
+                    }
+                } catch (e) { }
+                var dbr = new Ajax.Request("/jse", {parameters: {'e': e, 'f': f || window.location.href, 'l': l, 'loc': window.location.href, 'ref': Constants.referrer, 'tb': tb || stack_str }});
+                window.reported_exception = true;
+           }
+        }
+        window.LoadedJsSuccessfully = false; // this constant gets set to true at the bottom of dropbox.js
+        Event.observe(window, "load", function () {
+            if (!window.LoadedJsSuccessfully) {
+                global_report_exception("Failed to load javascript!");
+            }
+        });
+        window.onerror = function (e, f, l) {
+            global_report_exception(e, f, l);
+        };
+    </script>
+<script type="text/javascript" src="/static/19128/javascript/dropbox-mini.js"></script>
+
+     <script type="text/javascript">
+       if (self != top) {
+           top.location.replace(self.location.href);
+           setTimeout(function() {document.body.innerHTML = "<img src='https://www.dropbox.com/static/images/logo.png' onClick='top.location.href=window.location.href'>";},1);
+       }
+       else {
+           document.observe("dom:loaded", function () {$('frame-bust-show-me').show()});
+       }
+     </script>
+
+
+    <style type="text/css">
+      .hny-iowjqw { display: none; }
+    </style>
+    <style type="text/css">
+    h1 {
+        font-weight: bold;
+    }
+    input { padding: 3px 15px; }
+    #auth {
+        width: 500px;
+        margin: 55px auto 0 auto;
+    }
+    #auth li, #auth p {
+        font-size: 12px;
+        margin-bottom: 1em;
+        line-height: 1.5em;
+    }
+    #auth ul {
+        margin-left: -8px;
+        width: 508px;
+    }
+    #dropbox-connect-overlay {
+        width: 242px;
+        height: 82px;
+        margin: 0 auto;
+        background-image: url(/static/images/dropbox_connect.png);
+        padding: 14px 0 0 10px;
+    }
+    #auth input {
+        font-size: 12px;
+    }
+</style>
+
+</head>
+
+<body class="es" id='frame-bust-show-me' style='display:none'>
+
+    <div id="report-translate">
+        <a href="#" onclick="TranslationSuggest.start_wizard(event); return false;">
+            <img src="/static/i18n/translation_feedback__es.gif" alt=""/>
+        </a>
+    </div>
+
+
+    <div id="modal-behind" style="display: none;"></div>
+
+    <div id="modal" style="display: none;">
+        <div id="modal-box">
+            <a onclick="javascript: Modal.hide(); Event.stop(event); return false;" href="#" style="float: right;"><img src="&#47;static&#47;images&#47;icons&#47;icon_spacer.gif" alt="" border="0" class="sprite s_x " /></a>
+            <h2 id="modal-title"></h2>
+            <div id="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-overlay" style="display: none;" onclick="Modal.hide(); Event.stop(event); return false;"></div>
+    <div id="floaters"></div><div id="trash-can" style="display:none"></div><div id="grave-yard" style="display:none"></div>
+
+
+    <div id="feedback-div" style="display: none">
+        <div id="feedback">
+            <form method="post" action="/feedback">
+                Siempre aceptamos sugerencias, ideas, informes de errores y comentarios. Si deseas relacionarte con otros usuarios de Dropbox, échale un vistazo a nuestros <a id="forums_link">foros</a>.
+                <script type="text/javascript">
+                   Util.jag('forums_link', 'href', 'http://forums.dropbox.com');
+                </script>
+                <br/><br/>
+
+                <textarea class="textinput act_as_block" name="content" id="feedback_textarea" rows="1" cols="1"></textarea>
+
+                <div align="right">
+                    <input type="text" name="email" class="hny-iowjqw"/> 
+                    <input type="submit" value="Enviar comentarios" class="button" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="translate-div" style="display:none; margin-bottom: -10px">
+        <form id="translation-suggest-form" onsubmit="TranslationSuggest.submit_suggest(event); return false;" action='/translation_suggest' method="POST">
+            <input type="hidden" name="locale" value="es" />
+            <input type="hidden" name="locale_url" value="https://www.dropbox.com/0/oauth/authorize?oauth_token=g31vtpaol9yvyev" />
+            <input type="hidden" id="translation-msg-id" name="msg_id" value="" />
+            <p class="clean">Por favor, pega o escribe la traducción incorrecta</p>
+            <div id="part-one">
+                <p>
+                    <span class="error-message" id="bad-i18n-text-error" style="display: none">No pudimos encontrar esa secuencia de caracteres en esta página.</span>
+                    <textarea name="bad_text" id="bad-i18n-text" class="act_as_block textinput" rows='3' cols='40'></textarea>
+                </p>
+                <div id="bad-i18n-text-complete" class="autocomplete"></div>
+            </div>
+            <div id="part-two">
+                                    <div class="emo hotbox" id="translation-msg-display" style="margin-bottom: 10px"></div>
+                  <p class="clean">Texto original en inglés</p>
+                  <div class="green-hotbox" id="translation-orig-msg-display" style="margin-bottom: 10px"></div>
+                  <p class="clean">Traducción propuesta</p>
+                  <p><textarea name="suggested_text" class="textinput act_as_block" rows='3' cols='40'></textarea></p>
+                  <p class="clean">Explicación del problema</p>
+                  <p><textarea name="explanation" class="textinput act_as_block" rows='3' cols='40'></textarea></p>
+                  <p style="text-align: right; margin-bottom:0;">
+                      <input type="button" class="button grayed" onclick="TranslationSuggest.start_wizard(event);return false;" value="Regresar" id="translation-back-button"/>
+                      <input type="submit" class="button" onclick="TranslationSuggest.submit_suggest(event); return false;" value="Sugerir traducción" />
+                  </p>
+            </div>
+        </form>
+    </div>
+
+    <div id="server-error" class="notify server-er" style="display: none;">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="msg-td">
+                    <span class="msg-span">There was a problem completing this request.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b class="rbottom"><b class="r0"></b><b class="r1"></b></b>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="server-success" class="notify server-ok" style="display: none;">
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="msg-td">
+                    <span>Request completed successfully.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b class="rbottom"><b class="r0"></b><b class="r1"></b></b>
+                </td>
+            </tr>
+        </table>
+    </div>
+<div id="main-container">
+
+        <div id="header" class="clearfix">
+
+        <ul id="topnav">
+            <li>
+                <span>
+                    <strong>boriscyber@gmail.com</strong>
+                </span>
+            </li>
+            <li><a href="/account"><img src="&#47;static&#47;images&#47;icons&#47;icon_spacer.gif" style="vertical-align&#58;middle&#59;margin-top&#58;-3px" border="0" alt="" class="sprite s_wrench link-img" />Cuenta</a></li>
+            <li><a href="/plans"><img src="&#47;static&#47;images&#47;icons&#47;icon_spacer.gif" alt="" class="sprite s_star link-img" />Actualizar</a></li>
+            <li><a href="/logout"><img border="0" src="/static/19128/images/vspacer.gif" style="vertical-align: middle;" alt=""/>Salir</a></li>
+        </ul>
+            <a href="/home" id="logo"><img border="0" id="logo_img" alt="Dropbox - Facilidad y seguridad para respaldar, sincronizar y compartir." src="/static/19128/images/logo.png"/>
+	
+        </a>
+    </div>
+
+
+        <div name="main tabs" id="tabs-container" class="wit_group clearfix">
+                <a class='no-tab-link' href="/home"><img src="&#47;static&#47;images&#47;icons&#47;icon_spacer.gif" alt="" class="sprite s_arrow_turn_left link-img" />Regresar al inicio</a>
+        </div>
+
+    <div id="content" style='background:#fff;'  class="clearfix">
+        
+        <div id="full-content">
+            
+<div id="auth">
+    <p class="center">
+        <div id="dropbox-connect-overlay">
+            <img src="/static/images/dropbox_connect_q.png" alt=""/>
+        </div>
+    </p>
+
+
+
+<h1>¡Conexión realizada! </h1>
+<p> 
+  ¡Ahora tu cuenta de Dropbox está conectada con <a href="http://www.seema.de" target="_blank"><strong>seema</strong></a>!
+</p>
+</div>
+
+        </div>
+        <br class="clear"/>
+    </div>
+
+
+    <div id="ghost-icons" style="cursor: move; height: 0; width:0;"></div>
+    <br class="clear"/>
+
+
+    <!-- Footer -->
+    <div name="footer" class="wit_group" id="footer">
+        <div style="margin: 0 auto">
+            <p id="copyright">
+                 <img src="&#47;static&#47;images&#47;icons&#47;icon_spacer.gif" alt="" class="sprite s_gray_logo text-img" />&copy; 2011 Dropbox<br/>
+            </p>
+            <div id="locale_selector_cont">
+                <div id="locale_selector"></div>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Dropbox</li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/install">Instalar</a></li>
+                    <li><a href="/anywhere">Móvil</a></li>
+                    <li><a href="/plans">Precios</a></li>
+                    <li><a href="/features">Funciones</a></li>
+                    <li><a href="/tour">Recorrido</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Comunidad</li>
+                    <li><a href="/referrals" onmouseup="javascript: MCLog.log('referrals_via_footer');">Recomendaciones</a></li>
+                    <li><a href="http://twitter.com/dropbox" target="_blank">Twitter</a></li>
+                    <li><a href="http://facebook.com/Dropbox" target="_blank">Facebook</a></li>
+                    <li><a href="http://wiki.dropbox.com/">Wiki</a></li>
+                    <li><a href="/developers">Desarrolladores</a></li>
+                    <li><a href="/anywhere/apps">Socios</a></li>
+
+            </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Sobre nosotros</li>
+                    <li><a href="http://blog.dropbox.com/">Blog de Dropbox</a></li>
+                    <li><a href="/about">Nuestro equipo</a></li>
+                    <li><a href="/press">Prensa</a></li>
+                    <li><a href="/terms">Términos</a></li>
+                    <li><a href="/privacy">Privacidad</a></li>
+                    <li><a href="http://www.dropbox.com/jobs">Empleos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Soporte</li>
+                    <li><a href="/help">Centro de ayuda</a></li>
+                    <li><a href="http://forums.dropbox.com/">Foros</a></li>
+                    <li><a href="/votebox">Votebox</a></li>
+                    <li><a href="#" onclick="return Home.showFeedback();">Comentarios</a></li>
+                    <li><a href="/contact">Contáctanos</a></li>
+                    <li><a href="/dmca">Copyright</a></li>
+                </ul>
+            </div>
+           <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        e = $("feedback-link");
+        if (e) {
+            new Effect.Highlight(e , {duration: 0.5});
+        }
+
+        Tabs.init();
+        Tabs.check_interval = setInterval("Tabs.check_url('');", 300);
+        Dropdown.init();
+        TranslationSuggest.attach_autocomplete();
+    });
+</script>
+
+<script type="text/javascript">
+if (_gat) {
+    GA.pageTracker = _gat._getTracker("UA-279179-2");
+    Element.observe(window, 'load', function() {
+      GA.pageTracker._trackPageview()
+      GA.setPendingVars();
+    });
+}
+</script>
+<!--[if IE]>
+<iframe id="hashkeeper" name='hashkeeper' width="1" height="1" style="display: none" src="/blank" onload="HashKeeper.reloading=false;"></iframe>
+<![endif]-->
+
+<div id="ieconsole" style="position: absolute; top: 0; left: 0; font-family: Courier"></div>
+<div id="FB_HiddenContainer"  style="position:absolute; top:-10000px;width:0px; height:0px; left: 0;"></div>
+<script>
+TranslationSuggest.update_i18n_messages({"Partners": {"s": [], "e": [], "t": "Socios"}, "Upgrade": {"s": [], "e": [], "t": "Actualizar"}, "Copyright": {"s": [], "e": [], "t": "Copyright"}, "Privacy": {"s": [], "e": [], "t": "Privacidad"}, "Votebox": {"s": [], "e": [], "t": "Votebox"}, "Support": {"s": [], "e": [], "t": "Soporte"}, "Original English text": {"s": [], "e": [], "t": "Texto original en ingl\u00e9s"}, "Dropbox Blog": {"s": [], "e": [], "t": "Blog de Dropbox"}, "Translation feedback": {"s": [], "e": [], "t": "Comentarios sobre la traducci\u00f3n"}, "We couldn't find that string on this page.": {"s": [], "e": [], "t": "No pudimos encontrar esa secuencia de caracteres en esta p\u00e1gina."}, "Developers": {"s": [], "e": [], "t": "Desarrolladores"}, "Terms": {"s": [], "e": [], "t": "T\u00e9rminos"}, "Feedback": {"s": [], "e": [], "t": "Comentarios"}, "Your Dropbox account is now connected with %(application_name)s!": {"s": ["\u00a1Ahora tu cuenta de Dropbox est\u00e1 conectada con \x3ca href=\"http://www.seema.de\" target=\"_blank\">\x3cstrong>seema\x3c/strong>\x3c/a>!"], "e": ["Your Dropbox account is now connected with \x3ca href=\"http://www.seema.de\" target=\"_blank\">\x3cstrong>seema\x3c/strong>\x3c/a>!"], "t": "\u00a1Ahora tu cuenta de Dropbox est\u00e1 conectada con %(application_name)s!"}, "Success!": {"s": [], "e": [], "t": "\u00a1Conexi\u00f3n realizada!"}, "Facebook": {"s": [], "e": [], "t": "Facebook"}, "Press": {"s": [], "e": [], "t": "Prensa"}, "Dropbox": {"s": [], "e": [], "t": "Dropbox"}, "API Request Authorized": {"s": [], "e": [], "t": "Solicitud de la API fue autorizada"}, "Pricing": {"s": [], "e": [], "t": "Precios"}, "Account": {"s": [], "e": [], "t": "Cuenta"}, "Referrals": {"s": [], "e": [], "t": "Recomendaciones"}, "Mobile": {"s": [], "e": [], "t": "M\u00f3vil"}, "Please paste or type the improper translation": {"s": [], "e": [], "t": "Por favor, pega o escribe la traducci\u00f3n incorrecta"}, "Our Team": {"s": [], "e": [], "t": "Nuestro equipo"}, "Tour": {"s": [], "e": [], "t": "Recorrido"}, "Help Center": {"s": [], "e": [], "t": "Centro de ayuda"}, "Install": {"s": [], "e": [], "t": "Instalar"}, "Suggest Translation": {"s": [], "e": [], "t": "Sugerir traducci\u00f3n"}, "Jobs": {"s": [], "e": [], "t": "Empleos"}, "Contact Us": {"s": [], "e": [], "t": "Cont\u00e1ctanos"}, "Suggestions, ideas, bug reports, and comments are always welcome. If you'd like to interact with other Dropbox users, check out our \x3ca id=\"forums_link\">forums\x3c/a>.": {"s": [], "e": [], "t": "Siempre aceptamos sugerencias, ideas, informes de errores y comentarios. Si deseas relacionarte con otros usuarios de Dropbox, \u00e9chale un vistazo a nuestros \x3ca id=\"forums_link\">foros\x3c/a>."}, "About Us": {"s": [], "e": [], "t": "Sobre nosotros"}, "Wiki": {"s": [], "e": [], "t": "Wiki"}, "Features": {"s": [], "e": [], "t": "Funciones"}, "Log out": {"s": [], "e": [], "t": "Salir"}, "Twitter": {"s": [], "e": [], "t": "Twitter"}, "Dropbox is a free service that lets you bring your photos, docs, and videos anywhere and share them easily. Never email yourself a file again!": {"s": [], "e": [], "t": "Dropbox es un servicio gratuito que te permite llevar fotos, documentos y videos en cualquier lugar y compartirlos f\u00e1cilmente. \u00a1Nunca te enviar\u00e1s un archivo por correo electr\u00f3nico otra vez!"}, "Back": {"s": [], "e": [], "t": "Regresar"}, "Community": {"s": [], "e": [], "t": "Comunidad"}, "Back to home": {"s": [], "e": [], "t": "Regresar al inicio"}, "Suggested translation": {"s": [], "e": [], "t": "Traducci\u00f3n propuesta"}, "Send feedback": {"s": [], "e": [], "t": "Enviar comentarios"}, "Home": {"s": [], "e": [], "t": "Inicio"}, "Simplify your life": {"s": [], "e": [], "t": "Simplifica tu vida"}, "Forums": {"s": [], "e": [], "t": "Foros"}, "Dropbox - Secure backup, sync and sharing made easy.": {"s": [], "e": [], "t": "Dropbox - Facilidad y seguridad para respaldar, sincronizar y compartir."}, "Explanation of the problem": {"s": [], "e": [], "t": "Explicaci\u00f3n del problema"}});
+</script>
+
+
+
+<div id="notice-container" class="clearfix" style='display:none;'>
+</div>
+
+</body>
+</html>
