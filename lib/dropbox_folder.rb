@@ -7,7 +7,7 @@ end
 
 module DropboxFolder
   module Conf
-    mattr_accessor :email, :password, :consumer_key, :consumer_secret, :session, :dropbox_folder
+    mattr_accessor :email, :password, :consumer_key, :consumer_secret, :session, :dropbox_folder, :mode, :callback
 
     def self.setup(&b)
       b.call(self)
@@ -95,18 +95,18 @@ module DropboxFolder
       page = agent.get("http://dropbox.com")
       # login
       login_form = page.forms.find {|v| v.action =~ /login/ }
-      login_form.login_email    = ::DropboxFolder::Conf.email
-      login_form.login_password = ::DropboxFolder::Conf.password
+      login_form.login_email    = DropboxFolder::Conf.email
+      login_form.login_password = DropboxFolder::Conf.password
       login_form.submit
       # dropbox client
-      consumer_key    = ::DropboxFolder::Conf.consumer_key
-      consumer_secret = ::DropboxFolder::Conf.consumer_secret
-      @dropbox_folder_session = ::Dropbox::Session.new(consumer_key, consumer_secret)
-      @dropbox_folder_session.mode = :dropbox
+      consumer_key    = DropboxFolder::Conf.consumer_key
+      consumer_secret = DropboxFolder::Conf.consumer_secret
+      @dropbox_folder_session = Dropbox::Session.new(consumer_key, consumer_secret)
+      @dropbox_folder_session.mode = DropboxFolder::Conf.mode
 
       auth_page =  agent.get(@dropbox_folder_session.authorize_url)
 
-      @dropbox_folder_session.authorize
+      @dropbox_folder_session.authorize(:callback => DropboxFolder::Conf.callback)
     end
   end
 end
