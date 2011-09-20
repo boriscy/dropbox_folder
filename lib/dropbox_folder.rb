@@ -106,8 +106,7 @@ module DropboxFolder
 
       auth_page =  agent.get(@dropbox_folder_session.authorize_url)
 
-      #@dropbox_folder_session.authorize(:callback => DropboxFolder::Conf.callback)
-      @dropbox_folder_session.authorize(:exclude_callback => true)
+      @dropbox_folder_session.authorize(:callback => DropboxFolder::Conf.callback)
     end
   end
 end
